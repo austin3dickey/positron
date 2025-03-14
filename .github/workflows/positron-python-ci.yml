@@ -52,6 +52,9 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           enable-cache: true
 
+      - name: Add pip to uv venv
+        run: uv pip install pip
+
       - name: Install Node dependencies
         run: npm ci --fetch-timeout 120000
 
@@ -86,6 +89,9 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           enable-cache: true
+
+      - name: Add pip to uv venv
+        run: uv pip install pip
 
       - name: Install base Python requirements
         run: 'uv pip install --no-deps --require-hashes --only-binary :all: --target ./python_files/lib/python -r requirements.txt'
@@ -130,6 +136,9 @@ jobs:
           python-version: ${{ matrix.python }}
           enable-cache: true
 
+      - name: Add pip to uv venv
+        run: uv pip install pip
+
       - name: Install specific pytest version
         run: |
           uv pip install pytest
@@ -173,6 +182,9 @@ jobs:
           python-version: ${{ matrix.python }}
           enable-cache: true
 
+      - name: Add pip to uv venv
+        run: uv pip install pip
+
       - name: Install Positron IPyKernel requirements
         run: uv run scripts/vendor.py
 
@@ -200,6 +212,9 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
           enable-cache: true
+
+      - name: Add pip to uv venv
+        run: uv pip install pip
 
       - name: Install testing requirements
         run: |
