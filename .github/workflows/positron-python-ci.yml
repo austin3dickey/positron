@@ -73,8 +73,8 @@ jobs:
       - name: Lint and Check Formatting with Ruff
         run: |
           uv pip install ruff
-          uv run ruff check .
-          uv run ruff format --check
+          ruff check .
+          ruff format --check
         working-directory: ${{ env.PYTHON_SRC_DIR }}
 
   check-types:
@@ -135,9 +135,6 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
           enable-cache: true
-
-      - name: Add pip to uv venv
-        run: uv pip install pip
 
       - name: Install specific pytest version
         run: |
